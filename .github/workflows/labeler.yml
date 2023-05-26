@@ -8,6 +8,11 @@ jobs:
     if: github.repository == 'eclipse/omr'
     runs-on: ubuntu-latest
     steps:
-    - uses: fjeremic/cron-labeler@0.3.0
+    - name: Harden Runner
+      uses: step-security/harden-runner@128a63446a954579617e875aaab7d2978154e969 # v2.4.0
+      with:
+        egress-policy: audit
+
+    - uses: fjeremic/cron-labeler@640daafc8ea7f2b94acdfbcc4845e150571aea85 # 0.3.0
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
